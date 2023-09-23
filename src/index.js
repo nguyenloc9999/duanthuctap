@@ -3,12 +3,13 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import routerAuth from "./routers/auth.js";
-
+import routerProduct from "./routers/product.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api", routerAuth);
+app.use("/api", routerProduct);
 
 
 app.listen(8081, async () => {
