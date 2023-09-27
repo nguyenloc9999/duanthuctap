@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import routerAuth from "./routers/auth.js";
 import routerProduct from "./routers/product.js";
+import routerCategory from "./routers/category.js";
 import routerStatus from "./routers/status.js";
 import routerComment from "./routers/comments.js";
 import routerCoupons from "./routers/coupons.js";
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use("/api", routerAuth);
 app.use("/api", routerProduct);
+app.use("/api", routerCategory);
 app.use("/api", routerStatus);
 app.use("/api", routerComment);
 app.use("/api", routerOrder);
