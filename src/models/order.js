@@ -14,12 +14,11 @@ const orderSchema = mongoose.Schema({
   products: [
     {
       productId: { type: mongoose.Schema.Types.ObjectId, required: true },
-      product_name: String,
-      product_price: Number,
-      image: String,
-      stock_quantity: Number,
-      sizeId: String,
-      colorId: String
+      name: String,
+      author: Number,
+      price: String,
+      image: Number,
+      description: String,
     }
   ],
   total: {
