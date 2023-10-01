@@ -25,7 +25,6 @@ app.use("/api", routerOrder);
 app.use("/api", cartRouter);
 app.use("/api", routerCoupons)
 app.use("/api", routerPayment);
-
 app.listen(8081, async () => {
   await mongoose.connect(process.env.URL_MONGO, { useNewUrlParser: true, useUnifiedTopology: true });
   console.log("Server is running 8081");

@@ -16,14 +16,10 @@ const productSchema = mongoose.Schema({
     categoryId: {
         type: mongoose.Types.ObjectId,
         ref: "Category",
-        require: true
     }
     
 }, { timestamps: true, versionKey: false });
-productSchema.plugin(mongoosePaginate);
 
-// Ngăn chặn việc kiểm tra hợp lệ trước khi lưu
-productSchema.statics.validateBeforeSave = false;
 
 productSchema.plugin(mongoosePaginate);
 export default mongoose.model("Product", productSchema);
