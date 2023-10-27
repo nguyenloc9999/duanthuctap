@@ -1,13 +1,13 @@
 import express from "express";
-import { getAll, getOneById, remove, signin, signup } from "../controllers/auth.js";
+import { getAll, get, remove, signIn, signUp } from "../controllers/auth.js";
 
 
 const routerAuth = express.Router();
 
 routerAuth.get("/users", getAll);
-routerAuth.get("/users/:id", getOneById);
+routerAuth.get("/users/:id", get);
 routerAuth.delete("/users/:id", remove);
-routerAuth.post("/signup", signup);
-routerAuth.post("/signin", signin); 
+routerAuth.post("/signup", signUp);
+routerAuth.post("/signin", signIn); 
 
 export default routerAuth;
