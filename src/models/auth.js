@@ -1,45 +1,29 @@
-import { format } from "date-fns";
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-    first_name: {
+
+const userSchema = mongoose.Schema({
+    name: {
         type: String,
-        required: true,
-    },
-    last_name: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
+        require: true
     },
     email: {
         type: String,
-        unique: true,
-        required: true,
+        require: true
     },
-    phone: {
+    password: {
         type: String,
-        required: true,
+        require: true
     },
     address: {
         type: String,
-        required: true,
-    },
-    avatar: {
-        type: Object
     },
     role: {
         type: String,
-        default: "member",
+        default: "member"
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    image: {
+        type: Object
     }
 });
-userSchema.virtual("formattedCreatedAt").get(function () {
-    return format(this.createdAt, "HH:mm a dd/MM/yyyy");
-});
+
 export default mongoose.model("User", userSchema);

@@ -1,49 +1,41 @@
-import joi from "joi";
+import Joi from "joi";
 
-export const signupSchema = joi.object({
-    first_name: joi.string().required().messages({
-        "string.empty": "Mời nhập tên",
-        "any.required": 'Trường "Tên" là bắt buộc',
+export const signUpSchema = Joi.object({
+    _id: Joi.string(),
+    name: Joi.string().required().messages({
+        "string.empty": "Tên không được để trống",
+        "any.required": "Trường tên là bắt buộc",
     }),
-    last_name: joi.string().required().messages({
-        "string.empty": "Mời nhập họ",
-        "any.required": 'Trường "Họ" là bắt buộc',
+    email: Joi.string().email().required().messages({
+        "string.empty": "Email không đuọc để trống",
+        "any.required": "Trường email là bắt buộc",
+        "string.email": "Email phải đúng định dạng"
     }),
-    email: joi.string().email().required().messages({
-        "string.empty": "Email không được để trống",
-        "any.required": 'Trường "Email" là bắt buộc',
-        "string.email": "Email không đúng định dạng",
+    password: Joi.string().min(6).messages({
+        "string.empty": "Password không được để trống",
+        "any.required": "Trường password là bắt buộc",
+        "string.min": "Ít phất phải 6 kí tự",
     }),
-    password: joi.string().min(6).required().messages({
-        "string.empty": "Mật khẩu không được để trống",
-        "any.required": "Trường mật khẩu là bắt buộc",
-        "string.min": "Mật khẩu phải có ít nhất {#limit} ký tự",
-    }),
-    confirmPassword: joi.string().valid(joi.ref("password")).required().messages({
+    confirmpassword: Joi.string().valid(Joi.ref("password")).messages({
         "any.only": "Mật khẩu không khớp",
-        "string.empty": "Mật khẩu không được để trống",
-        "any.required": "Trường mật khẩu là bắt buộc",
+        "string.empty": "Confirm không được để trống",
+        "any.required": "Trường confirm là bắt buộc",
     }),
-    phone: joi.string().min(10).required().messages({
-        "string.empty": "Mời điền số điện thoại",
-        "any.required": "Trường số điện thoại là bắt buộc",
-        "string.min": "Số điện thoại phải có ít nhất {#limit} số",
-    }),
-    address: joi.string().required().messages({
-        "string.empty": "Thêm địa chỉ ",
-        "any.required": 'Trường "Địa chỉ" là bắt buộc',
-    }),
-    avatar: joi.object()
+    address: Joi.string(),
+    role: Joi.string(),
+    image: Joi.object()
+
 });
-export const signinSchema = joi.object({
-    email: joi.string().email().required().messages({
-        "string.empty": "Mời nhập email ",
-        "any.required": 'Trường "Email" là bắt buộc',
-        "string.email": "Email không đúng định dạng",
+
+export const signInSchema = Joi.object({
+    email: Joi.string().email().required().messages({
+        "string.empty": "Email không được bỏ trống",
+        "string.email": "Email phải đúng định dạng",
+        "any.required": "Email là trường bắt buộc"
     }),
-    password: joi.string().min(6).required().messages({
-        "string.empty": "Mật khẩu không được để trống",
-        "any.required": "Trường mật khẩu là bắt buộc",
-        "string.min": "Mật khẩu phải có ít nhất {#limit} ký tự",
-    }),
-});
+    password: Joi.string().min(6).required().messages({
+        "string.empty": "Mật khẩu không được bỏ trống",
+        "string.min": "Password phải chứa ít nhất {#limit} ký tự",
+        "any.required": "Mật khẩu là trường bắt buộc"
+    })
+})
