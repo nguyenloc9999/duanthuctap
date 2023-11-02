@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { deleteImage, updateImage, uploadImage } from "../controller/upload.js";
+import { deleteImage, updateImage, uploadImage } from "../controllers/upload.js";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import cloudinary from "../config/cloudinary.js";
 const router = express.Router();
@@ -9,7 +9,7 @@ const router = express.Router();
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: "WE17301",
+        folder: "duanthuctap",
         format: "png",
     }
 });

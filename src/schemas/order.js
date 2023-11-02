@@ -1,6 +1,7 @@
 import Joi from "joi";
 export const orderSchema = Joi.object({
     _id: Joi.string(),
+    name: Joi.string().required(),
     userId: Joi.string().required().messages({
         "string.empty": "ID người dùng bắt buộc nhập",
         "any.required": "Trường ID người dùng bắt buộc nhập",
