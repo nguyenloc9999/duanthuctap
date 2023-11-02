@@ -10,7 +10,7 @@ import routerComment from "./routers/comments.js";
 import routerCoupons from "./routers/coupons.js";
 import routerOrder from "./routers/order.js";
 import cartRouter from "./routers/cart.js";
-import routerPayment from "./routers/payments.js";
+import routerUpload from "./routers/upload.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -23,8 +23,8 @@ app.use("/api", routerStatus);
 app.use("/api", routerComment);
 app.use("/api", routerOrder);
 app.use("/api", cartRouter);
-app.use("/api", routerCoupons)
-app.use("/api", routerPayment);
+app.use("/api", routerCoupons);
+app.use("/api", routerUpload);
 app.listen(8081, async () => {
   await mongoose.connect(process.env.URL_MONGO, { useNewUrlParser: true, useUnifiedTopology: true });
   console.log("Server is running 8081");
